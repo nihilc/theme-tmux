@@ -29,7 +29,7 @@ built_mod(){
 }
 main(){
     # Get flavor
-    theme="$(get_opt "@flavor" "catppuccin-mocha")"
+    theme="$(get_opt "@theme_flavor" "catppuccin_mocha")"
 
     # Load colors
     # https://github.com/dylanaraps/pure-sh-bible#parsing-a-keyval-file

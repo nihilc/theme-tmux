@@ -1,16 +1,16 @@
 # --> Catppuccin (Mocha)
 
 # Interfaz
-c_fg="#cdd6f4"
-c_bg="#1e1e2e"
+c_fg="#cdd6f4" # text
+c_bg="#1e1e2e" # base
 
-c_black0="#313244"
-c_black1="#45475a"
-c_black2="#585b70"
+c_black0="#313244" # surface0
+c_black1="#45475a" # surface1
+c_black2="#585b70" # surface2
 
-c_gray0="#6c7086"
-c_gray1="#7f849c"
-c_gray2="#9399b2"
+c_gray0="#6c7086" # overlay0
+c_gray1="#7f849c" # overlay1
+c_gray2="#9399b2" # overlay2
 
 # Colors
 c_00="#45475a" # surface1

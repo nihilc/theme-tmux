@@ -1,0 +1,38 @@
+# --> Catppuccin (Macchiato)
+
+# Interfaz
+c_fg="#cad3f5" # text
+c_bg="#24273a" # base
+
+c_black0="#363a4f" # surface0
+c_black1="#494d64" # surface1
+c_black2="#5b6078" # surface2
+
+c_gray0="#6e738d" # overlay0
+c_gray1="#8087a2" # overlay1
+c_gray2="#939ab7" # overlay2
+
+# Colors
+c_00="#494d64" # surface1
+c_08="#5b6078" # surface2
+
+c_01="#ed8796" # Red	
+c_09="#ee99a0" # Maroon	
+
+c_02="#a6da95" # Green	
+c_10="#8bd5ca" # Teal	
+
+c_03="#eed49f" # Yellow	
+c_11="#f4dbd6" # Rosewater	
+
+c_04="#8aadf4" # Blue	
+c_12="#b7bdf8" # Lavender 
+
+c_05="#f5bde6" # Pink	
+c_13="#c6a0f6" # Mauve	
+
+c_06="#91d7e3" # Sky	
+c_14="#7dc4e4" # Sapphire	
+
+c_07="#b8c0e0" # subtext1
+c_15="#a5adcb" # subtext0	
