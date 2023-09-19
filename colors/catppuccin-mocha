@@ -1,0 +1,38 @@
+# --> Catppuccin (Mocha)
+
+# Interfaz
+c_fg="#cdd6f4"
+c_bg="#1e1e2e"
+
+c_black0="#313244"
+c_black1="#45475a"
+c_black2="#585b70"
+
+c_gray0="#6c7086"
+c_gray1="#7f849c"
+c_gray2="#9399b2"
+
+# Colors
+c_00="#45475a" # surface1
+c_08="#585b70" # surface2
+
+c_01="#f38ba8" # Red	
+c_09="#eba0ac" # Maroon	
+
+c_02="#a6e3a1" # Green	
+c_10="#94e2d5" # Teal	
+
+c_03="#f9e2af" # Yellow	
+c_11="#f5e0dc" # Rosewater	
+
+c_04="#89b4fa" # Blue	
+c_12="#b4befe" # Lavender 
+
+c_05="#f5c2e7" # Pink	
+c_13="#cba6f7" # Mauve	
+
+c_06="#89dceb" # Sky	
+c_14="#74c7ec" # Sapphire	
+
+c_07="#bac2de" # subtext1
+c_15="#a6adc8" # subtext0	
