@@ -18,9 +18,9 @@ set -g @option_name 'your_value'
 
 ### Globals
 
-| option       |      default       |
-| :----------- | :----------------: |
-| theme_flavor | `catppuccin_mocha` |
+| option        |      default       |
+| :------------ | :----------------: |
+| theme_flavour | `catppuccin_mocha` |
 
 ### Modules
 
