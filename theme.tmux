@@ -49,9 +49,11 @@ main(){
     source "$PLUGIN_DIR/status/window.sh"
 
     # Set opts
+    tmux set -gq pane-border-style fg="$c_00"
+    tmux set -gq pane-active-border-style fg="$c_02"
+
     tmux set -gq status-fg "$c_fg"
     tmux set -gq status-bg "$c_bg"
-    tmux set -gq pane-active-border-style fg="$c_02",bg=default
 
     tmux set -gq status-left-length 100
     tmux set -gq status-left "$(status_left)"
