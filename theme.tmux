@@ -19,14 +19,7 @@ get_opt(){
         echo "$default"
     fi
 }
-built_mod(){
-    local color1=$1
-    local color2=$2
-    local icon=$3
-    local text=$4
 
-    echo "#[fg=$color2,bg=$color1] $icon $(sep_up "$color1" "$color2")#[fg=$color1,bg=$color2] $text "
-}
 main(){
     # Get flavor
     theme="$(get_opt "@theme_flavor" "catppuccin_mocha")"
