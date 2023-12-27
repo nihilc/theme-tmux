@@ -5,11 +5,9 @@ fg = foreground
 
 black0 = less dark that bg
 black1 = less dark that black0
-black2 = less dark that black1
 
 gray0 = less dark that black2
 gray1 = less dark that gray0
-gray2 = less dark that gray1
 
 00 = black
 01 = red
