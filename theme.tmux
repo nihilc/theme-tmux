@@ -31,6 +31,7 @@ main(){
     # Get flavor
     theme="$(get_opt "@theme_flavor" "catppuccin_mocha")"
 
+    declare -A COLORS
     # Load colors
     # https://github.com/dylanaraps/pure-sh-bible#parsing-a-keyval-file
     while IFS='=' read -r key val; do
@@ -40,18 +41,18 @@ main(){
 
         # '$key' stores the key.
         # '$val' stores the value.
-        eval "local $key"="$val"
+        eval "COLORS[$key]"="$val"
     done < "${PLUGIN_DIR}/colors/${theme}"
 
-    source "$PLUGIN_DIR/status/sep.sh"
-    source "$PLUGIN_DIR/status/left.sh"
-    source "$PLUGIN_DIR/status/right.sh"
-    source "$PLUGIN_DIR/status/window.sh"
+    source "$PLUGIN_DIR/src/modules.sh"
+    source "$PLUGIN_DIR/src/status.sh"
 
     # Set opts
-    tmux set -gq status-fg "$c_fg"
-    tmux set -gq status-bg "$c_bg"
-    tmux set -gq pane-active-border-style fg="$c_02",bg=default
+    tmux set -gq status-fg "${COLORS[fg]}"
+    tmux set -gq status-bg "${COLORS[bg]}"
+
+    tmux set -gq pane-border-style fg="${COLORS[00]}"
+    tmux set -gq pane-active-border-style fg="${COLORS[02]}"
 
     tmux set -gq status-left-length 100
     tmux set -gq status-left "$(status_left)"
@@ -59,9 +60,9 @@ main(){
     tmux set -gq status-right-length 100
     tmux set -gq status-right "$(status_right)"
 
-    tmux setw -gq window-status-separator ""
-    tmux setw -gq window-status-format "$(status_window)"
-    tmux setw -gq window-status-current-format "$(status_window_active)"
+    # tmux setw -gq window-status-separator ""
+    # tmux setw -gq window-status-format "$(status_window)"
+    # tmux setw -gq window-status-current-format "$(status_window_active)"
 }
 
 main
