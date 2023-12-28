@@ -25,9 +25,21 @@ MODULES=(
 
 build_module(){
     local mod_name=$1
-    local mod_icon=${MODULES[${mod_name}_icon]}
-    local mod_color=${MODULES[${mod_name}_color]}
-    local mod_text=${MODULES[${mod_name}_text]}
+    local style=$2
+    local status=$3
 
-    echo "#[fg=${COLORS[black1]},bg=${COLORS[$mod_color]}] $mod_icon #[fg=${COLORS[$mod_color]},bg=${COLORS[black1]}] $mod_text "
+    local mod_icon mod_color mod_text show_icon show_text show_sep_left show_sep_right show_sep_middle
+
+    mod_icon=${MODULES[${mod_name}_icon]}
+    mod_color=${MODULES[${mod_name}_color]}
+    mod_text=${MODULES[${mod_name}_text]}
+
+    show_sep_left=""
+    show_sep_right=""
+    show_sep_middle="$(separator_middle "$mod_color" "$style" "$status")"
+
+    show_icon="#[fg=${COLORS[black1]},bg=${COLORS[$mod_color]}] $mod_icon "
+    show_text="#[fg=${COLORS[$mod_color]},bg=${COLORS[black1]}] $mod_text "
+
+    echo "$show_sep_left$show_icon$show_sep_middle$show_text$show_sep_right"
 }

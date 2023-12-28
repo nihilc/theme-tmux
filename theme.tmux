@@ -39,6 +39,7 @@ main(){
 
     source "$PLUGIN_DIR/src/modules.sh"
     source "$PLUGIN_DIR/src/status.sh"
+    source "$PLUGIN_DIR/src/separators.sh"
 
     # Set opts
     tmux set -gq status-fg "${COLORS[fg]}"
