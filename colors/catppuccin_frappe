@@ -6,11 +6,9 @@ bg="#303446" # base
 
 black0="#414559" # surface0
 black1="#51576d" # surface1
-black2="#626880" # surface2
 
 gray0="#737994" # overlay0
 gray1="#838ba7" # overlay1
-gray2="#949cbb" # overlay2
 
 # Colors
 00="#51576d" # surface1

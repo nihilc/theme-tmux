@@ -22,7 +22,7 @@ get_opt(){
 
 main(){
     # Get flavor
-    theme="$(get_opt "@theme_flavor" "catppuccin_mocha")"
+    theme="$(get_opt "@theme_flavour" "catppuccin_mocha")"
 
     declare -A COLORS
     # Load colors
