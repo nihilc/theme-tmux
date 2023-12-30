@@ -7,9 +7,15 @@ status_left(){
     style="$(get_opt "@theme_status_left_style" "none")"
 
     read -r -a modules <<< "$modules"
-    for module in "${modules[@]}"
+    for i in "${!modules[@]}"
     do
-        build_module "$module" "$style" "left"
+        isFirst="false"
+        isLast="false"
+        # Check the index and find if is first or last
+        [ "$i" == 0 ] && isFirst="true"
+        [ $((i + 1)) == ${#modules[*]} ] && isLast="true"
+
+        build_module "${modules[$i]}" "$style" "left" "$isFirst" "$isLast"
     done
 
 }
@@ -20,8 +26,14 @@ status_right(){
     style="$(get_opt "@theme_status_right_style" "none")"
 
     read -r -a modules <<< "$modules"
-    for module in "${modules[@]}"
+    for i in "${!modules[@]}"
     do
-        build_module "$module" "$style" "right"
+        isFirst="false"
+        isLast="false"
+        # Check the index and find if is first or last
+        [ "$i" == 0 ] && isFirst="true"
+        [ $((i + 1)) == ${#modules[*]} ] && isLast="true"
+
+        build_module "${modules[$i]}" "$style" "right" "$isFirst" "$isLast"
     done
 }

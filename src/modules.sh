@@ -27,6 +27,8 @@ build_module(){
     local mod_name=$1
     local style=$2
     local status=$3
+    local isFirst=$4
+    local isLast=$5
 
     local mod_icon mod_color mod_text show_icon show_text show_sep_left show_sep_right show_sep_middle
 
@@ -34,8 +36,8 @@ build_module(){
     mod_color=${MODULES[${mod_name}_color]}
     mod_text=${MODULES[${mod_name}_text]}
 
-    show_sep_left=""
-    show_sep_right=""
+    show_sep_left="$(separator_left "$mod_color" "$style" "$status" "$isFirst")"
+    show_sep_right="$(separator_right "$mod_color" "$style" "$status" "$isLast")"
     show_sep_middle="$(separator_middle "$mod_color" "$style" "$status")"
 
     show_icon="#[fg=${COLORS[black1]},bg=${COLORS[$mod_color]}] $mod_icon "
