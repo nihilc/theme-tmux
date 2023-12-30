@@ -8,19 +8,22 @@ separator_left(){
     local style=$2
     local status=$3
     local isFirst=$4
+    local space_between=${OPTIONS['status_space_between']}
 
     local sep=""
 
     if [ "$status" == "left" ]
     then
+        [ "$space_between" == true ] && color_bg="bg"
+
         [ "$style" == "a" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
         [ "$style" == "b" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
         [ "$style" == "c" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
         [ "$style" == "d" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
 
-        [ "$isFirst" == "true" ] && sep=""
+        [ "$isFirst" == true ] && sep=""
     else
-        [ "$isFirst" == "true" ] && color_bg="bg"
+        [ "$isFirst" == true ] || [ "$space_between" == true ] && color_bg="bg"
 
         [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
         [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
@@ -31,27 +34,40 @@ separator_left(){
     echo "$sep"
 }
 separator_right(){
-    local color=$1
-    local color_bg="black1"
+    local color="black1"
+    local color_bg="bg"
     local style=$2
     local status=$3
     local isLast=$4
+    local space_bettween=${OPTIONS['status_space_between']}
 
     local sep=""
 
-    if [ "$status" == "left" ] && [ "$isLast" == "true" ]
+    if [ "$status" == "left" ]
     then
-        color="black1"
-        color_bg="bg"
-
         [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
         [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
         [ "$style" == "c" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
         [ "$style" == "d" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+    else
+        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "d" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+    fi
+    [ "$style" == "none" ] && sep="#[bg=${COLORS[$color_bg]}] "
 
+    # Add with space in last left status module
+    if [ "$status" == "left" ] && [ "$isLast" == true ]
+    then
         end_space="#[bg=${COLORS[bg]}] "
         sep+=$end_space
     fi
+
+    # Delete separator if isn't set space_bettween, except for the last in left status
+    [ "$space_bettween" == false ] && [ "$isLast" == false ] && sep=""
+    # Delete separator in last right status module
+    [ "$status" == "right" ] && [ "$isLast" == true ] && sep=""
 
     echo "$sep"
 }
