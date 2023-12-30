@@ -4,6 +4,7 @@
 
 separator_left(){
     local color=$1
+    local color_bg="black1"
     local style=$2
     local status=$3
     local isFirst=$4
@@ -12,25 +13,26 @@ separator_left(){
 
     if [ "$status" == "left" ]
     then
-        [ "$style" == "a" ] && sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]"
-        [ "$style" == "b" ] && sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]"
-        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[black1]}]"
-        [ "$style" == "d" ] && sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]"
+        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "d" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
 
         [ "$isFirst" == "true" ] && sep=""
     else
-        [ "$isFirst" == "true" ] && bg="bg" || bg="black1"
+        [ "$isFirst" == "true" ] && color_bg="bg"
 
-        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
-        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
-        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
-        [ "$style" == "d" ] && sep="#[fg=${COLORS[$bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "d" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
     fi
 
     echo "$sep"
 }
 separator_right(){
     local color=$1
+    local color_bg="black1"
     local style=$2
     local status=$3
     local isLast=$4
@@ -40,12 +42,12 @@ separator_right(){
     if [ "$status" == "left" ] && [ "$isLast" == "true" ]
     then
         color="black1"
-        bg="bg"
+        color_bg="bg"
 
-        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
-        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
-        [ "$style" == "c" ] && sep="#[fg=${COLORS[$bg]},bg=${COLORS[$color]}]"
-        [ "$style" == "d" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$bg]}]"
+        [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+        [ "$style" == "c" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
+        [ "$style" == "d" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
 
         end_space="#[bg=${COLORS[bg]}] "
         sep+=$end_space
@@ -55,6 +57,7 @@ separator_right(){
 }
 separator_middle(){
     local color=$1
+    local color_bg="black1"
     local style=$2
     local status=$3
 
@@ -62,15 +65,15 @@ separator_middle(){
 
     case $style in
         "a")
-            [ "$status" == "left" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[black1]}]"
-            [ "$status" == "right" ] && sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]"
+            [ "$status" == "left" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+            [ "$status" == "right" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
             ;;
         "b")
-            [ "$status" == "left" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[black1]}]"
-            [ "$status" == "right" ] && sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]"
+            [ "$status" == "left" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
+            [ "$status" == "right" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
             ;;
-        "c") sep="#[fg=${COLORS[black1]},bg=${COLORS[$color]}]" ;;
-        "d") sep="#[fg=${COLORS[$color]},bg=${COLORS[black1]}]" ;;
+        "c") sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]" ;;
+        "d") sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]" ;;
     esac
 
     echo "$sep"
