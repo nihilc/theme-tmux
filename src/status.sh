@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-declare -A OPTIONS=(
-    ["status_space_between"]="$(get_opt "@theme_status_space_between" "true")"
-    ["status_left_style"]="$(get_opt "@theme_status_left_style" "none")"
-    ["status_right_style"]="$(get_opt "@theme_status_right_style" "none")"
-    ["status_left_modules"]="$(get_opt "@theme_status_left_modules" "session")"
-    ["status_right_modules"]="$(get_opt "@theme_status_right_modules" "user host date time")"
-)
-
 status_left(){
     local modules style
 

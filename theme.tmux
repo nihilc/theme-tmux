@@ -21,8 +21,17 @@ get_opt(){
 }
 
 main(){
-    # Get flavor
-    theme="$(get_opt "@theme_flavour" "catppuccin_mocha")"
+
+    declare -A OPTIONS=(
+        ["theme_flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
+        ["theme_spaced"]="$(get_opt "@theme_spaced" "true")"
+
+        ["status_left_style"]="$(get_opt "@theme_status_left_style" "none")"
+        ["status_left_modules"]="$(get_opt "@theme_status_left_modules" "session")"
+
+        ["status_right_style"]="$(get_opt "@theme_status_right_style" "none")"
+        ["status_right_modules"]="$(get_opt "@theme_status_right_modules" "user host date time")"
+    )
 
     declare -A COLORS
     # Load colors
@@ -35,7 +44,7 @@ main(){
         # '$key' stores the key.
         # '$val' stores the value.
         eval "COLORS[$key]"="$val"
-    done < "${PLUGIN_DIR}/colors/${theme}"
+    done < "${PLUGIN_DIR}/colors/${OPTIONS[theme_flavour]}"
 
     source "$PLUGIN_DIR/src/modules.sh"
     source "$PLUGIN_DIR/src/status.sh"

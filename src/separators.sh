@@ -8,13 +8,13 @@ separator_left(){
     local style=$2
     local status=$3
     local isFirst=$4
-    local space_between=${OPTIONS['status_space_between']}
+    local spaced=${OPTIONS['theme_spaced']}
 
     local sep=""
 
     if [ "$status" == "left" ]
     then
-        [ "$space_between" == true ] && color_bg="bg"
+        [ "$spaced" == true ] && color_bg="bg"
 
         [ "$style" == "a" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
         [ "$style" == "b" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
@@ -23,7 +23,7 @@ separator_left(){
 
         [ "$isFirst" == true ] && sep=""
     else
-        [ "$isFirst" == true ] || [ "$space_between" == true ] && color_bg="bg"
+        [ "$isFirst" == true ] || [ "$spaced" == true ] && color_bg="bg"
 
         [ "$style" == "a" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
         [ "$style" == "b" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
@@ -39,7 +39,7 @@ separator_right(){
     local style=$2
     local status=$3
     local isLast=$4
-    local space_bettween=${OPTIONS['status_space_between']}
+    local spaced=${OPTIONS['theme_spaced']}
 
     local sep=""
 
@@ -64,8 +64,8 @@ separator_right(){
         sep+=$end_space
     fi
 
-    # Delete separator if isn't set space_bettween, except for the last in left status
-    [ "$space_bettween" == false ] && [ "$isLast" == false ] && sep=""
+    # Delete separator if isn't set spaced, except for the last in left status
+    [ "$spaced" == false ] && [ "$isLast" == false ] && sep=""
     # Delete separator in last right status module
     [ "$status" == "right" ] && [ "$isLast" == true ] && sep=""
 
