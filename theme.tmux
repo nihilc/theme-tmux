@@ -24,7 +24,7 @@ main(){
 
     declare -A OPTIONS=(
         ["theme_flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
-        ["theme_spaced"]="$(get_opt "@theme_spaced" "true")"
+        ["status_spaced"]="$(get_opt "@theme_status_spaced" "true")"
 
         ["status_left_style"]="$(get_opt "@theme_status_left_style" "none")"
         ["status_left_modules"]="$(get_opt "@theme_status_left_modules" "session")"

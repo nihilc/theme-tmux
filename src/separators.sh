@@ -8,7 +8,7 @@ separator_left(){
     local style=$2
     local status=$3
     local isFirst=$4
-    local spaced=${OPTIONS['theme_spaced']}
+    local spaced=${OPTIONS['status_spaced']}
 
     local sep=""
 
@@ -39,7 +39,7 @@ separator_right(){
     local style=$2
     local status=$3
     local isLast=$4
-    local spaced=${OPTIONS['theme_spaced']}
+    local spaced=${OPTIONS['status_spaced']}
 
     local sep=""
 
