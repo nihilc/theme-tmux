@@ -4,7 +4,7 @@
 
 separator_left(){
     local color=$1
-    local color_bg="black1"
+    local color_bg=00
     local style=$2
     local status=$3
     local isFirst=$4
@@ -34,7 +34,7 @@ separator_left(){
     echo "$sep"
 }
 separator_right(){
-    local color="black1"
+    local color=00
     local color_bg="bg"
     local style=$2
     local status=$3
@@ -73,7 +73,7 @@ separator_right(){
 }
 separator_middle(){
     local color=$1
-    local color_bg="black1"
+    local color_bg=00
     local style=$2
     local status=$3
 

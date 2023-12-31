@@ -4,15 +4,9 @@
 fg="#cad3f5" # text
 bg="#24273a" # base
 
-black0="#363a4f" # surface0
-black1="#494d64" # surface1
-
-gray0="#6e738d" # overlay0
-gray1="#8087a2" # overlay1
-
 # Colors
 00="#494d64" # surface1
-08="#5b6078" # surface2
+08="#363a4f" # surface2
 
 01="#ed8796" # Red	
 09="#ee99a0" # Maroon	
