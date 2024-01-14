@@ -31,6 +31,14 @@ main(){
 
         ["status_right_style"]="$(get_opt "@theme_status_right_style" "none")"
         ["status_right_modules"]="$(get_opt "@theme_status_right_modules" "user host date time")"
+
+        ["window_style"]="$(get_opt "@theme_window_style" "none")"
+        ["window_index"]="$(get_opt "@theme_window_index" "#I")"
+        ["window_text"]="$(get_opt "@theme_window_text" "#W")"
+        ["window_color_default"]="$(get_opt "@theme_window_color_default" "00")"
+        ["window_color_default_bg"]="$(get_opt "@theme_window_color_default_bg" "08")"
+        ["window_color_current"]="$(get_opt "@theme_window_color_current" "06")"
+        ["window_color_current_bg"]="$(get_opt "@theme_window_color_current_bg" "00")"
     )
 
     declare -A COLORS
@@ -63,9 +71,9 @@ main(){
     tmux set -gq status-right-length 200
     tmux set -gq status-right "$(status_right)"
 
-    # tmux setw -gq window-status-separator ""
-    # tmux setw -gq window-status-format "$(status_window)"
-    # tmux setw -gq window-status-current-format "$(status_window_active)"
+    tmux setw -gq window-status-separator " "
+    tmux setw -gq window-status-format "$(status_window)"
+    tmux setw -gq window-status-current-format "$(status_window_active)"
 }
 
 main
