@@ -57,10 +57,10 @@ main(){
     tmux set -gq pane-border-style fg="${COLORS[00]}"
     tmux set -gq pane-active-border-style fg="${COLORS[02]}"
 
-    tmux set -gq status-left-length 100
+    tmux set -gq status-left-length 200
     tmux set -gq status-left "$(status_left)"
 
-    tmux set -gq status-right-length 100
+    tmux set -gq status-right-length 200
     tmux set -gq status-right "$(status_right)"
 
     # tmux setw -gq window-status-separator ""
