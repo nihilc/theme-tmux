@@ -29,21 +29,69 @@ build_module(){
     local status=$3
     local isFirst=$4
     local isLast=$5
+    local isSpaced=$6
 
-    local color_bg mod_icon mod_color mod_text show_icon show_text show_sep_left show_sep_right show_sep_middle
+    local icon text color1 color2 color_bg sep_l sep_m sep_r space_l space_r
 
-    color_bg=00
+    icon=${MODULES[${mod_name}_icon]}
+    text=${MODULES[${mod_name}_text]}
 
-    mod_icon=${MODULES[${mod_name}_icon]}
-    mod_color=${MODULES[${mod_name}_color]}
-    mod_text=${MODULES[${mod_name}_text]}
+    color1=${MODULES[${mod_name}_color]}
+    color2=00
+    color_bg='bg'
 
-    show_sep_left="$(separator_left "$mod_color" "$style" "$status" "$isFirst")"
-    show_sep_right="$(separator_right "$mod_color" "$style" "$status" "$isLast")"
-    show_sep_middle="$(separator_middle "$mod_color" "$style" "$status")"
 
-    show_icon="#[fg=${COLORS[$color_bg]},bg=${COLORS[$mod_color]}] $mod_icon "
-    show_text="#[fg=${COLORS[$mod_color]},bg=${COLORS[$color_bg]}] $mod_text "
+    # None style spaced or not spaced
+    white_space="#[bg=${COLORS[bg]}] "
+    space_l=$white_space
+    space_r=$white_space
+    if [ "$style" == "none" ]
+    then
+        [ "$status" == "right" ] && space_r=""
+        [ "$status" == "left" ] && space_l=""
+        [ "$status" == "right" ] && [ "$isFirst" == true ] && space_l=""
+        [ "$status" == "left" ] && [ "$isLast" == true ] && space_r=""
+    else
+        space_l=""
+        space_r=""
+    fi
 
-    echo "$show_sep_left$show_icon$show_sep_middle$show_text$show_sep_right"
+    # Build style separators spaced
+    if [ "$status" == "left" ]
+    then
+        sep_l="$(separator "$color_bg" "$color1" "$style" "right")"
+        sep_m="$(separator "$color1" "$color2" "$style" "right")"
+        sep_r="$(separator "$color2" "$color_bg" "$style" "right")"
+    fi
+    if [ "$status" == "right" ]
+    then
+        sep_l="$(separator "$color1" "$color_bg" "$style" "left")"
+        sep_m="$(separator "$color2" "$color1" "$style" "left")"
+        sep_r="$(separator "$color_bg" "$color2" "$style" "left")"
+    fi
+
+    # Rebuild separators for not spaced
+    if [ "$isSpaced" == false ]
+    then
+        # rebuild left with right colors
+        if [ "$status" == "left" ]
+        then
+            sep_l="$(separator "$color2" "$color1" "$style" "right")"
+        fi
+        if [ "$status" == "right" ] && [ "$isFirst" == false ]
+        then
+            sep_l="$(separator "$color1" "$color2" "$style" "left")"
+        fi
+        # remove right separator
+        [ "$isLast" == false ] && sep_r=""
+    fi
+
+    # Delete separator in the extremes
+    [ "$status" == "left" ] && [ "$isFirst" == true ] && sep_l=""
+    [ "$status" == "right" ] && [ "$isLast" == true ] && sep_r=""
+
+    show_icon="#[fg=${COLORS[$color2]},bg=${COLORS[$color1]}] $icon "
+    show_text="#[fg=${COLORS[$color1]},bg=${COLORS[$color2]}] $text "
+
+    echo "$space_l$sep_l$show_icon$sep_m$show_text$sep_r$space_r"
 }

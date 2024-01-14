@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 status_left(){
-    local modules style show_modules
+    local modules style spaced show_modules
 
     modules=${OPTIONS["status_left_modules"]}
     style=${OPTIONS["status_left_style"]}
+    spaced=${OPTIONS["status_left_spaced"]}
 
     read -r -a modules <<< "$modules"
     for i in "${!modules[@]}"
@@ -15,17 +16,18 @@ status_left(){
         [ "$i" == 0 ] && isFirst=true
         [ $((i + 1)) == ${#modules[*]} ] && isLast=true
 
-        show_modules+="$(build_module "${modules[$i]}" "$style" "left" "$isFirst" "$isLast")"
+        show_modules+="$(build_module "${modules[$i]}" "$style" "left" "$isFirst" "$isLast" "$spaced")"
     done
 
     white_space="#[bg=${COLORS[bg]}] "
     echo "$show_modules$white_space"
 }
 status_right(){
-    local modules style show_modules
+    local modules style spaced show_modules
 
     modules=${OPTIONS["status_right_modules"]}
     style=${OPTIONS["status_right_style"]}
+    spaced=${OPTIONS["status_right_spaced"]}
 
     read -r -a modules <<< "$modules"
     for i in "${!modules[@]}"
@@ -36,7 +38,7 @@ status_right(){
         [ "$i" == 0 ] && isFirst=true
         [ $((i + 1)) == ${#modules[*]} ] && isLast=true
 
-        show_modules+="$(build_module "${modules[$i]}" "$style" "right" "$isFirst" "$isLast")"
+        show_modules+="$(build_module "${modules[$i]}" "$style" "right" "$isFirst" "$isLast" "$spaced")"
     done
 
     white_space="#[bg=${COLORS[bg]}] "

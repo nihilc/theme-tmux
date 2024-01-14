@@ -24,13 +24,14 @@ main(){
 
     declare -A OPTIONS=(
         ["theme_flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
-        ["status_spaced"]="$(get_opt "@theme_status_spaced" "true")"
 
         ["status_left_style"]="$(get_opt "@theme_status_left_style" "none")"
         ["status_left_modules"]="$(get_opt "@theme_status_left_modules" "session")"
+        ["status_left_spaced"]="$(get_opt "@theme_status_left_spaced" "true")"
 
         ["status_right_style"]="$(get_opt "@theme_status_right_style" "none")"
         ["status_right_modules"]="$(get_opt "@theme_status_right_modules" "user host date time")"
+        ["status_right_spaced"]="$(get_opt "@theme_status_right_spaced" "true")"
 
         ["window_style"]="$(get_opt "@theme_window_style" "none")"
         ["window_index"]="$(get_opt "@theme_window_index" "#I")"
