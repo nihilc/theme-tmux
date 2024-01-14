@@ -55,19 +55,13 @@ separator_right(){
         [ "$style" == "c" ] && sep="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}]"
         [ "$style" == "d" ] && sep="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}]"
     fi
-    [ "$style" == "none" ] && sep="#[bg=${COLORS[$color_bg]}] "
+    [ "$style" == none ] && sep="#[bg=${COLORS[bg]}] "
 
-    # Add with space in last left status module
-    if [ "$status" == "left" ] && [ "$isLast" == true ]
-    then
-        end_space="#[bg=${COLORS[bg]}] "
-        sep+=$end_space
-    fi
-
-    # Delete separator if isn't set spaced, except for the last in left status
+    # Delete all if isn't spaced
     [ "$spaced" == false ] && [ "$isLast" == false ] && sep=""
-    # Delete separator in last right status module
-    [ "$status" == "right" ] && [ "$isLast" == true ] && sep=""
+
+    # Delete last separator if style is none or is right status
+    [ "$isLast" == true ] && { [ "$style" == "none" ] || [ "$status" == "right" ]; } && sep=""
 
     echo "$sep"
 }
