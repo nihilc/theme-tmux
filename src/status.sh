@@ -46,44 +46,26 @@ status_right(){
 }
 
 status_window(){
-    local style index text color color_bg
+    local state=$1
+    local style index text color1 color2 color_bg
 
     style=${OPTIONS["window_style"]}
-    color=${OPTIONS["window_color_default"]}
-    color_bg=${OPTIONS["window_color_default_bg"]}
+    color1=${OPTIONS["window_color_${state}"]}
+    color2=${OPTIONS["window_color_${state}_bg"]}
+    color_bg="bg"
 
     index=${OPTIONS["window_index"]}
     text=${OPTIONS["window_text"]}
 
-    sep_l=""
-    sep_r=""
-    sep_m=""
+    sep_l="$(separator "$color_bg" "$color1" "$style" "right" )"
+    sep_m="$(separator "$color1" "$color2" "$style" "right" )"
+    sep_r="$(separator "$color2" "$color_bg" "$style" "right" )"
 
-    show_index="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}] $index "
-    show_text="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}] $text "
+    white_space="#[bg=${COLORS[bg]}] "
+    [ "$style" == "none" ] && sep_r=$white_space
 
-    show_sep_l=""
-    show_sep_r=""
-    show_sep_m=""
+    show_index="#[fg=${COLORS[$color2]},bg=${COLORS[$color1]}] $index "
+    show_text="#[fg=${COLORS[$color1]},bg=${COLORS[$color2]}] $text "
 
-    echo "$show_sep_l$show_index$show_sep_m$show_text$show_sep_r"
-}
-status_window_active(){
-    local style index text color color_bg
-
-    style=${OPTIONS["window_style"]}
-    color=${OPTIONS["window_color_current"]}
-    color_bg=${OPTIONS["window_color_current_bg"]}
-
-    index=${OPTIONS["window_index"]}
-    text=${OPTIONS["window_text"]}
-
-    show_sep_l=""
-    show_sep_r=""
-    show_sep_m=""
-
-    show_index="#[fg=${COLORS[$color_bg]},bg=${COLORS[$color]}] $index "
-    show_text="#[fg=${COLORS[$color]},bg=${COLORS[$color_bg]}] $text "
-
-    echo "$show_sep_l$show_index$show_sep_m$show_text$show_sep_r"
+    echo "$sep_l$show_index$sep_m$show_text$sep_r"
 }
