@@ -20,7 +20,7 @@ status_left(){
         show_modules+="$(build_module "${modules[$i]}" "$style" "left" "$isFirst" "$isLast" "$spaced")"
     done
 
-    white_space="#[bg=${COLORS[bg]}] "
+    [ "$style" == "none" ] && white_space="#[bg=${COLORS[bg]}] "
     echo "$show_modules$white_space"
 }
 status_right(){
@@ -43,7 +43,7 @@ status_right(){
         show_modules+="$(build_module "${modules[$i]}" "$style" "right" "$isFirst" "$isLast" "$spaced")"
     done
 
-    white_space="#[bg=${COLORS[bg]}] "
+    [ "$style" == "none" ] && white_space="#[bg=${COLORS[bg]}] "
     echo "$white_space$show_modules"
 }
 

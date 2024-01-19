@@ -7,3 +7,4 @@
 - [ ] Add more colors
 - [ ] Let user select bold or italic for module
 - [ ] Add screenshots to readme
+- [ ] Make separator between status and windows
