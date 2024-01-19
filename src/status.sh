@@ -3,9 +3,10 @@
 status_left(){
     local modules style spaced show_modules
 
-    modules=${OPTIONS["status_left_modules"]}
-    style=${OPTIONS["status_left_style"]}
-    spaced=${OPTIONS["status_left_spaced"]}
+    modules=${OPTIONS["modules_left"]}
+    # check if is set specific style or use global
+    style="${OPTIONS[style_left]:=${OPTIONS[style]}}"
+    spaced="${OPTIONS[spaced_left]:=${OPTIONS[spaced]}}"
 
     read -r -a modules <<< "$modules"
     for i in "${!modules[@]}"
@@ -25,9 +26,10 @@ status_left(){
 status_right(){
     local modules style spaced show_modules
 
-    modules=${OPTIONS["status_right_modules"]}
-    style=${OPTIONS["status_right_style"]}
-    spaced=${OPTIONS["status_right_spaced"]}
+    modules=${OPTIONS["modules_right"]}
+    # check if is set specific style or use global
+    style="${OPTIONS[style_right]:=${OPTIONS[style]}}"
+    spaced="${OPTIONS[spaced_right]:=${OPTIONS[spaced]}}"
 
     read -r -a modules <<< "$modules"
     for i in "${!modules[@]}"
@@ -49,7 +51,9 @@ status_window(){
     local state=$1
     local style index text color1 color2 color_bg
 
-    style=${OPTIONS["window_style"]}
+    # check if is set specific style or use global
+    style="${OPTIONS[style_window]:=${OPTIONS[style]}}"
+
     color1=${OPTIONS["window_color_${state}"]}
     color2=${OPTIONS["window_color_${state}_bg"]}
     color_bg="bg"

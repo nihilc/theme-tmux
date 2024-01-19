@@ -17,23 +17,25 @@ get_opt(){
         fi
     else
         echo "$default"
-    fi
-}
+fi }
 
 main(){
 
     declare -A OPTIONS=(
-        ["theme_flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
+        ["flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
 
-        ["status_left_style"]="$(get_opt "@theme_status_left_style" "none")"
-        ["status_left_modules"]="$(get_opt "@theme_status_left_modules" "session")"
-        ["status_left_spaced"]="$(get_opt "@theme_status_left_spaced" "true")"
+        ["style"]="$(get_opt "@theme_style" "none")"
+        ["style_left"]="$(get_opt "@theme_style_left")"
+        ["style_right"]="$(get_opt "@theme_style_right")"
+        ["style_window"]="$(get_opt "@theme_style_window")"
 
-        ["status_right_style"]="$(get_opt "@theme_status_right_style" "none")"
-        ["status_right_modules"]="$(get_opt "@theme_status_right_modules" "user host date time")"
-        ["status_right_spaced"]="$(get_opt "@theme_status_right_spaced" "true")"
+        ["spaced"]="$(get_opt "@theme_spaced" "true")"
+        ["spaced_left"]="$(get_opt "@theme_spaced_left")"
+        ["spaced_right"]="$(get_opt "@theme_spaced_right")"
 
-        ["window_style"]="$(get_opt "@theme_window_style" "none")"
+        ["modules_left"]="$(get_opt "@theme_modules_left" "session")"
+        ["modules_right"]="$(get_opt "@theme_modules_right" "user host date time")"
+
         ["window_index"]="$(get_opt "@theme_window_index" "#I#F")"
         ["window_text"]="$(get_opt "@theme_window_text" "#W")"
         ["window_color_default"]="$(get_opt "@theme_window_color_default" "15")"
@@ -53,7 +55,7 @@ main(){
         # '$key' stores the key.
         # '$val' stores the value.
         eval "COLORS[$key]"="$val"
-    done < "${PLUGIN_DIR}/colors/${OPTIONS[theme_flavour]}"
+    done < "${PLUGIN_DIR}/colors/${OPTIONS[flavour]}"
 
     source "$PLUGIN_DIR/src/modules.sh"
     source "$PLUGIN_DIR/src/status.sh"
