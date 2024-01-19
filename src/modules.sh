@@ -31,7 +31,7 @@ build_module(){
     local isLast=$5
     local isSpaced=$6
 
-    local icon text color1 color2 color_bg sep_l sep_m sep_r space_l space_r
+    local icon text color1 color2 color_bg sep_l sep_m sep_r
 
     icon=${MODULES[${mod_name}_icon]}
     text=${MODULES[${mod_name}_text]}
@@ -39,22 +39,6 @@ build_module(){
     color1=${MODULES[${mod_name}_color]}
     color2=00
     color_bg='bg'
-
-
-    # None style spaced or not spaced
-    white_space="#[bg=${COLORS[bg]}] "
-    space_l=$white_space
-    space_r=$white_space
-    if [ "$style" == "none" ]
-    then
-        [ "$status" == "right" ] && space_r=""
-        [ "$status" == "left" ] && space_l=""
-        [ "$status" == "right" ] && [ "$isFirst" == true ] && space_l=""
-        [ "$status" == "left" ] && [ "$isLast" == true ] && space_r=""
-    else
-        space_l=""
-        space_r=""
-    fi
 
     # Build style separators spaced
     if [ "$status" == "left" ]
@@ -68,6 +52,12 @@ build_module(){
         sep_l="$(separator "$color1" "$color_bg" "$style" "left")"
         sep_m="$(separator "$color2" "$color1" "$style" "left")"
         sep_r="$(separator "$color_bg" "$color2" "$style" "left")"
+    fi
+    if [ "$style" == "none" ] && [ "$isLast" == false ]
+    then
+        sep_l=""
+        sep_m=""
+        sep_r="#[bg=${COLORS[$color_bg]}] "
     fi
 
     # Rebuild separators for not spaced
@@ -93,5 +83,5 @@ build_module(){
     show_icon="#[fg=${COLORS[$color2]},bg=${COLORS[$color1]}] $icon "
     show_text="#[fg=${COLORS[$color1]},bg=${COLORS[$color2]}] $text "
 
-    echo "$space_l$sep_l$show_icon$sep_m$show_text$sep_r$space_r"
+    echo "$sep_l$show_icon$sep_m$show_text$sep_r"
 }
