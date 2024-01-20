@@ -35,13 +35,6 @@ main(){
 
         ["modules_left"]="$(get_opt "@theme_modules_left" "session")"
         ["modules_right"]="$(get_opt "@theme_modules_right" "user host date time")"
-
-        ["window_index"]="$(get_opt "@theme_window_index" "#I#F")"
-        ["window_text"]="$(get_opt "@theme_window_text" "#W")"
-        ["window_color_default"]="$(get_opt "@theme_window_color_default" "15")"
-        ["window_color_default_bg"]="$(get_opt "@theme_window_color_default_bg" "08")"
-        ["window_color_current"]="$(get_opt "@theme_window_color_current" "06")"
-        ["window_color_current_bg"]="$(get_opt "@theme_window_color_current_bg" "00")"
     )
 
     declare -A COLORS

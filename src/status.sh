@@ -54,12 +54,12 @@ status_window(){
     # check if is set specific style or use global
     style="${OPTIONS[style_window]:=${OPTIONS[style]}}"
 
-    color1=${OPTIONS["window_color_${state}"]}
-    color2=${OPTIONS["window_color_${state}_bg"]}
+    color1=${MODULES["window_${state}_color1"]}
+    color2=${MODULES["window_${state}_color2"]}
     color_bg="bg"
 
-    index=${OPTIONS["window_index"]}
-    text=${OPTIONS["window_text"]}
+    index=${MODULES["window_${state}_icon"]}
+    text=${MODULES["window_${state}_text"]}
 
     sep_l="$(separator "$color_bg" "$color1" "$style" "right" )"
     sep_m="$(separator "$color1" "$color2" "$style" "right" )"

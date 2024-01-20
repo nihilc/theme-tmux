@@ -3,24 +3,39 @@
 declare -A MODULES
 MODULES=(
     ["session_icon"]="$(get_opt "@theme_module_session_icon" "")"
-    ["session_color"]="$(get_opt "@theme_module_session_color" "01")"
     ["session_text"]="$(get_opt "@theme_module_session_text" "#S")"
+    ["session_color1"]="$(get_opt "@theme_module_session_color1" "01")"
+    ["session_color2"]="$(get_opt "@theme_module_session_color2" "00")"
 
     ["user_icon"]="$(get_opt "@theme_module_user_icon" "")"
-    ["user_color"]="$(get_opt "@theme_module_user_color" "02")"
     ["user_text"]="$(get_opt "@theme_module_user_text" "$(whoami)")"
+    ["user_color1"]="$(get_opt "@theme_module_user_color1" "02")"
+    ["user_color2"]="$(get_opt "@theme_module_user_color2" "00")"
 
     ["host_icon"]="$(get_opt "@theme_module_host_icon" "")"
-    ["host_color"]="$(get_opt "@theme_module_host_color" "03")"
     ["host_text"]="$(get_opt "@theme_module_host_text" "#H")"
+    ["host_color1"]="$(get_opt "@theme_module_host_color1" "03")"
+    ["host_color2"]="$(get_opt "@theme_module_host_color2" "00")"
 
     ["date_icon"]="$(get_opt "@theme_module_date_icon" "")"
-    ["date_color"]="$(get_opt "@theme_module_date_icon" "04")"
     ["date_text"]="$(get_opt "@theme_module_date_text" "%Y-%m-%d")"
+    ["date_color1"]="$(get_opt "@theme_module_date_color1" "04")"
+    ["date_color2"]="$(get_opt "@theme_module_date_color2" "00")"
 
     ["time_icon"]="$(get_opt "@theme_module_time_icon" "")"
-    ["time_color"]="$(get_opt "@theme_module_time_icon" "05")"
     ["time_text"]="$(get_opt "@theme_module_time_text" "%H:%M")"
+    ["time_color1"]="$(get_opt "@theme_module_time_color1" "05")"
+    ["time_color2"]="$(get_opt "@theme_module_time_color2" "00")"
+
+    ["window_default_icon"]="$(get_opt "@theme_window_default_icon" "#I#F")"
+    ["window_default_text"]="$(get_opt "@theme_window_default_text" "#W")"
+    ["window_default_color1"]="$(get_opt "@theme_window_default_color1" "15")"
+    ["window_default_color2"]="$(get_opt "@theme_window_default_color2" "08")"
+
+    ["window_current_icon"]="$(get_opt "@theme_window_current_icon" "#I#F")"
+    ["window_current_text"]="$(get_opt "@theme_window_current_text" "#W")"
+    ["window_current_color1"]="$(get_opt "@theme_window_current_color1" "06")"
+    ["window_current_color2"]="$(get_opt "@theme_window_current_color2" "00")"
 )
 
 build_module(){
@@ -36,8 +51,8 @@ build_module(){
     icon=${MODULES[${mod_name}_icon]}
     text=${MODULES[${mod_name}_text]}
 
-    color1=${MODULES[${mod_name}_color]}
-    color2=00
+    color1=${MODULES[${mod_name}_color1]}
+    color2=${MODULES[${mod_name}_color2]}
     color_bg='bg'
 
     # Build style separators spaced
