@@ -29,12 +29,12 @@ MODULES=(
 
     ["window_default_icon"]="$(get_opt "@theme_window_default_icon" "#I#F")"
     ["window_default_text"]="$(get_opt "@theme_window_default_text" "#W")"
-    ["window_default_color1"]="$(get_opt "@theme_window_default_color1" "15")"
-    ["window_default_color2"]="$(get_opt "@theme_window_default_color2" "08")"
+    ["window_default_color1"]="$(get_opt "@theme_window_default_color1" "07")"
+    ["window_default_color2"]="$(get_opt "@theme_window_default_color2" "00")"
 
     ["window_current_icon"]="$(get_opt "@theme_window_current_icon" "#I#F")"
     ["window_current_text"]="$(get_opt "@theme_window_current_text" "#W")"
-    ["window_current_color1"]="$(get_opt "@theme_window_current_color1" "06")"
+    ["window_current_color1"]="$(get_opt "@theme_window_current_color1" "13")"
     ["window_current_color2"]="$(get_opt "@theme_window_current_color2" "00")"
 )
 
