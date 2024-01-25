@@ -1,6 +1,6 @@
 ## Content
 
-1. Instalation
+1. Installation
 2. Configuration Options
    1. Themes
    2. Status
@@ -8,7 +8,7 @@
    4. Windows
 3. Configuration Examples
 
-## Instalation
+## Installation
 
 Using tpm:
 
@@ -32,16 +32,24 @@ set -g @theme_flavour "catppuccin_mocha"
 Values:
 
 - catppuccin_mocha
-- catppuccin_macchiaton
+- catppuccin_macchiato
 - catppuccin_frappe
 
 ### Status
 
 #### Status separator style:
 
+Set global style:
+
 ```sh
-set -g @theme_status_left_style 'none'
-set -g @theme_status_right_style 'none'
+set -g @theme_style 'none'
+```
+
+Set specific style:
+
+```sh
+set -g @theme_style_left 'none'
+set -g @theme_style_right 'none'
 ```
 
 Values:
@@ -54,8 +62,17 @@ Values:
 
 #### Status separators spaced:
 
+Set global spaced
+
 ```sh
-set -g @theme_status_spaced "true"
+set -g @theme_spaced "true"
+```
+
+Set specific spaced
+
+```sh
+set -g @theme_spaced_left "true"
+set -g @theme_spaced_right "true"
 ```
 
 Values:
@@ -66,8 +83,8 @@ Values:
 ### Modules:
 
 ```sh
-set -g @theme_status_left_modules 'session'
-set -g @theme_status_right_modules 'user host date time'
+set -g @theme_modules_left 'session'
+set -g @theme_modules_right 'user host date time'
 ```
 
 Values:
@@ -79,11 +96,11 @@ Values:
 - time - show time HH:MM
 
 > [!WARNING]
-> At the moment, you should add at least one module on each side of the status
+> You should add at least one module on each side of the status
 
 #### Customizing Modules
 
-You can change the icon, color and text displayed in each module:
+You can change the icon, text and colors displayed in each module:
 
 ```sh
 set -g @theme_module_<module_name>_<option>
@@ -100,19 +117,82 @@ Default options:
 | module  | option |   default   |
 | :------ | :----: | :---------: |
 | session |  icon  |     ``     |
-|         | color  |    `01`     |
+|         | color1 |    `01`     |
+|         | color2 |    `00`     |
 |         |  text  |    `#S`     |
 | user    |  icon  |     ``     |
-|         | color  |    `02`     |
+|         | color1 |    `02`     |
+|         | color2 |    `00`     |
 |         |  text  | `$(whoami)` |
 | host    |  icon  |     ``     |
-|         | color  |    `03`     |
+|         | color1 |    `03`     |
+|         | color2 |    `00`     |
 |         |  text  |    `#H`     |
 | date    |  icon  |     ``     |
-|         | color  |    `04`     |
+|         | color1 |    `04`     |
+|         | color2 |    `00`     |
 |         |  text  | `%Y-%m-%d`  |
 | time    |  icon  |     ``     |
-|         | color  |    `05`     |
+|         | color1 |    `05`     |
+|         | color2 |    `00`     |
 |         |  text  |   `%H:%M`   |
 
 ### Windows
+
+#### Windows justify
+
+Set the windows position
+
+```sh
+set -g @theme_justify "left"
+```
+
+Values:
+
+- left
+- right
+- centre
+
+#### Windows style
+
+By default, windows take on the style of the status bar to which they are justified. But you can set a specific style.
+
+```sh
+set -g @theme_style_window
+```
+
+#### Windows spaced
+
+By default windows take on the spaced of the status bar to which they are justified. But you can set a specific spaced.
+
+```sh
+set -g @theme_spaced_window
+```
+
+#### Windows modules
+
+As the status modules you can edit the icon, text and colors of the windows modules
+
+```sh
+set -g @theme_window_<state>_<option> 'value'
+```
+
+Example to change the colors of the current window
+
+```sh
+set -g @theme_window_current_color1 '06'
+set -g @theme_window_current_color2 '08'
+```
+
+Options:
+
+| state   | option | default |
+| :------ | :----: | :-----: |
+| default |  icon  |  `#I`   |
+|         |  text  |  `#W`   |
+|         | color1 |  `07`   |
+|         | color2 |  `00`   |
+| current |  icon  |  `#I`   |
+|         |  text  |  `#W`   |
+|         | color1 |  `13`   |
+|         | color2 |  `00`   |
