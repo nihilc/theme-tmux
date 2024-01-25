@@ -23,6 +23,7 @@ main(){
 
     declare -A OPTIONS=(
         ["flavour"]="$(get_opt "@theme_flavour" "catppuccin_mocha")"
+        ["justify"]="$(get_opt "@theme_justify" "left")"
 
         ["style"]="$(get_opt "@theme_style" "none")"
         ["style_left"]="$(get_opt "@theme_style_left")"
@@ -32,6 +33,7 @@ main(){
         ["spaced"]="$(get_opt "@theme_spaced" "true")"
         ["spaced_left"]="$(get_opt "@theme_spaced_left")"
         ["spaced_right"]="$(get_opt "@theme_spaced_right")"
+        ["spaced_window"]="$(get_opt "@theme_spaced_window")"
 
         ["modules_left"]="$(get_opt "@theme_modules_left" "session")"
         ["modules_right"]="$(get_opt "@theme_modules_right" "user host date time")"
@@ -60,6 +62,8 @@ main(){
 
     tmux set -gq pane-border-style fg="${COLORS[00]}"
     tmux set -gq pane-active-border-style fg="${COLORS[02]}"
+
+    tmux set -q status-justify "${OPTIONS[justify]}"
 
     tmux set -gq status-left-length 200
     tmux set -gq status-left "$(status_left)"

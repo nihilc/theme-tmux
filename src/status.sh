@@ -49,27 +49,25 @@ status_right(){
 
 status_window(){
     local state=$1
-    local style index text color1 color2 color_bg
+    local justify style spaced
 
-    # check if is set specific style or use global
-    style="${OPTIONS[style_window]:=${OPTIONS[style]}}"
+    justify="${OPTIONS[justify]}"
 
-    color1=${MODULES["window_${state}_color1"]}
-    color2=${MODULES["window_${state}_color2"]}
-    color_bg="bg"
+    # Global style
+    style="${OPTIONS[style]}"
+    # Check for side style
+    [ "$justify" == "left" ] && style="${OPTIONS[style_left]:=${OPTIONS[style]}}"
+    [ "$justify" == "right" ] && style="${OPTIONS[style_right]:=${OPTIONS[style]}}"
+    # Check for specific style
+    style="${OPTIONS[style_window]:=$style}"
 
-    index=${MODULES["window_${state}_icon"]}
-    text=${MODULES["window_${state}_text"]}
+    # Global spaced
+    spaced="${OPTIONS[spaced]}"
+    # Check for side spaced
+    [ "$justify" == "left" ] && spaced="${OPTIONS[spaced_left]:=${OPTIONS[spaced]}}"
+    [ "$justify" == "right" ] && spaced="${OPTIONS[spaced_right]:=${OPTIONS[spaced]}}"
+    # Check for specific spaced
+    spaced="${OPTIONS[spaced_window]:=$spaced}"
 
-    sep_l="$(separator "$color_bg" "$color1" "$style" "right" )"
-    sep_m="$(separator "$color1" "$color2" "$style" "right" )"
-    sep_r="$(separator "$color2" "$color_bg" "$style" "right" )"
-
-    white_space="#[bg=${COLORS[bg]}] "
-    [ "$style" == "none" ] && sep_r=$white_space
-
-    show_index="#[fg=${COLORS[$color2]},bg=${COLORS[$color1]}] $index "
-    show_text="#[fg=${COLORS[$color1]},bg=${COLORS[$color2]}] $text "
-
-    echo "$sep_l$show_index$sep_m$show_text$sep_r"
+    build_window "$state" "$style" "$spaced" "$justify"
 }
