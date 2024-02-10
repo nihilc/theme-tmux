@@ -1,0 +1,23 @@
+# --> Nord
+
+# Interfaz
+fg="#D8DEE9" # text
+bg="#2E3440" # base
+
+# Colors
+00="#3B4252" # surface1
+08="#4C566A" # surface0
+01="#BF616A" # Red	
+09="#BF616A" # Maroon	
+02="#A3BE8C" # Green	
+10="#A3BE8C" # Teal	
+03="#EBCB8B" # Yellow	
+11="#EBCB8B" # Rosewater	
+04="#81A1C1" # Blue	
+12="#81A1C1" # Lavender 
+05="#B48EAD" # Pink	
+13="#B48EAD" # Mauve	
+06="#88C0D0" # Sky	
+14="#8FBCBB" # Sapphire	
+07="#E5E9F0" # overlay2
+15="#ECEFF4" # overlay1	
